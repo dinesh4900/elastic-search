@@ -1,5 +1,5 @@
 import { Body, Controller, Param, Post, Put, Delete, Get } from "@nestjs/common";
-import { SalesService } from "./sales.service";
+import { SalesService } from "./service/sales.service";
 import { CreateSalesDto, UpdateSalesDto } from "./dto/sales.dto";
 import { Sales } from "./schema/sales.schema";
 

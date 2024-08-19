@@ -1,20 +1,30 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { Types } from "mongoose";
-import { Sales } from "./schema/sales.schema";
-import { CreateSalesDto, UpdateSalesDto } from "./dto/sales.dto";
-import { SalesRepo } from "./sales.repo";
-
-
-
+import { Sales } from "../schema/sales.schema";
+import { CreateSalesDto, UpdateSalesDto } from "../dto/sales.dto";
+import { SalesRepo } from "../sales.repo";
+import { ElasticSearchService } from "./elastic-search.service";
 
 @Injectable()
 export class SalesService {
-  constructor(private readonly salesRepo: SalesRepo) { }
+  constructor(private readonly salesRepo: SalesRepo, private readonly elasticService: ElasticSearchService) { }
 
   newId(): string {
     return new Types.ObjectId().toHexString();
   }
+
   async create(input: CreateSalesDto) {
+    this.elasticService.createIndex('sales', {
+      body: {
+        mappings: {
+          properties: {
+            name: { type: 'text' },
+            age: { type: 'integer' },
+            createdAt: { type: 'date' },
+          },
+        },
+      },
+    })
     return await this.salesRepo.create(input);
   }
 

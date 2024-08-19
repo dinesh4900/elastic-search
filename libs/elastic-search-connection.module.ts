@@ -18,6 +18,9 @@ const ElasticSearchModule = ElasticsearchModule.register({
     username: ELASTIC_USERNAME,
     password: ELASTIC_PASSWORD,
   },
+  tls: {
+    rejectUnauthorized: false,  // This disables SSL certificate validation
+  },
 });
 
 
