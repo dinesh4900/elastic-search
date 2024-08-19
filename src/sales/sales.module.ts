@@ -6,12 +6,14 @@ import { SalesRepo } from './sales.repo';
 import { SalesController } from './sales.controller';
 import { ElasticSearchConnectionModule } from 'libs/elastic-search-connection.module';
 import { ElasticSearchService } from './service/elastic-search.service';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Sales.name, schema: SalesSchema }]),
-    ElasticSearchConnectionModule
+    ElasticSearchConnectionModule,
+    EventEmitterModule.forRoot(),
   ],
   providers: [SalesService, SalesRepo, ElasticSearchService],
   controllers: [SalesController]
