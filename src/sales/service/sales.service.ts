@@ -17,22 +17,7 @@ export class SalesService {
   }
 
   async create(input: CreateSalesDto) {
-    this.elasticService.createIndex('naveen', {
-      body: {
-        mappings: {
-          properties: {
-            name: { type: 'text' },
-            age: { type: 'integer' },
-            createdAt: { type: 'date' },
-          },
-        },
-      },
-    })
     const result = await this.salesRepo.create(input);
-    this.eventEmitter.emit(
-      'sales.created',
-      new SalesCreatedEvent(result._id.toString(), result.toObject()),
-    );
     return result
   }
 

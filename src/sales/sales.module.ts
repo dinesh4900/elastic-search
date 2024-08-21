@@ -7,6 +7,7 @@ import { SalesController } from './sales.controller';
 import { ElasticSearchConnectionModule } from 'libs/elastic-search-connection.module';
 import { ElasticSearchService } from './service/elastic-search.service';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { MongoChangeStreamService } from './service/mongo-change-event.service';
 
 
 @Module({
@@ -15,7 +16,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     ElasticSearchConnectionModule,
     EventEmitterModule.forRoot(),
   ],
-  providers: [SalesService, SalesRepo, ElasticSearchService],
+  providers: [SalesService, SalesRepo, ElasticSearchService, MongoChangeStreamService],
   controllers: [SalesController]
 })
 export class SalesModule { }
