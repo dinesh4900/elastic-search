@@ -6,7 +6,6 @@ import { SalesRepo } from "../sales.repo";
 import { ElasticSearchService } from "./elastic-search.service";
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { salesDataMapping } from "libs/mapping";
-import { salesData } from "src/data/sales";
 
 
 @Injectable()

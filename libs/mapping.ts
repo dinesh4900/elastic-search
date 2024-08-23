@@ -23,49 +23,25 @@ export const salesDataMapping = {
       type: 'text',
       fields: {
         keyword: {
-          type: 'keyword array',
+          type: 'keyword',
           ignore_above: 256,
         },
       },
     },
     discounted_price: {
-      type: 'text',
-      fields: {
-        keyword: {
-          type: 'keyword',
-          ignore_above: 256,
-        },
-      },
+      type: 'long',
     },
     actual_price: {
-      type: 'text',
-      fields: {
-        keyword: {
-          type: 'keyword',
-          ignore_above: 256,
-        },
-      },
+      type: 'long',
     },
     discount_percentage: {
-      type: 'text',
-      fields: {
-        keyword: {
-          type: 'keyword',
-          ignore_above: 256,
-        },
-      },
+      type: 'long',
     },
     rating: {
       type: 'long',
     },
     rating_count: {
-      type: 'text',
-      fields: {
-        keyword: {
-          type: 'keyword',
-          ignore_above: 256,
-        },
-      },
+      type: 'long',
     },
   }
 }

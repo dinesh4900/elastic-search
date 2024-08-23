@@ -13,19 +13,19 @@ export class Sales extends Document {
   category: string;
 
   @Prop()
-  discounted_price: string;
+  discounted_price: number;
 
   @Prop()
-  actual_price: string;
+  actual_price: number;
 
   @Prop()
-  discount_percentage: string;
+  discount_percentage: number;
 
   @Prop()
   rating: number;
 
   @Prop()
-  rating_count: string;
+  rating_count: number;
 }
 
 export type TaskDocument = Sales & Document;

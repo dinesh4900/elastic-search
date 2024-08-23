@@ -24,7 +24,6 @@ export class MongoChangeStreamService implements OnModuleInit {
       const documentKey = change.documentKey?._id;
       const fullDocument = change.fullDocument;
 
-
       if (documentKey && fullDocument) {
         await this.syncToElasticsearch(documentKey.toString(), fullDocument);
       } else {
