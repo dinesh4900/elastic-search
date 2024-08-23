@@ -4,13 +4,28 @@ import { Document } from 'mongoose';
 @Schema()
 export class Sales extends Document {
   @Prop({ required: true })
-  name: string;
+  product_id: string;
 
   @Prop()
-  age: number;
+  product_name: string;
 
   @Prop()
-  email: string;
+  category: string;
+
+  @Prop()
+  discounted_price: string;
+
+  @Prop()
+  actual_price: string;
+
+  @Prop()
+  discount_percentage: string;
+
+  @Prop()
+  rating: number;
+
+  @Prop()
+  rating_count: string;
 }
 
 export type TaskDocument = Sales & Document;

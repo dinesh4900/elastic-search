@@ -36,7 +36,7 @@ export class MongoChangeStreamService implements OnModuleInit {
   private async syncToElasticsearch(id: string, data: any) {
     const { _id, ...dataWithoutId } = data;
     await this.elasticsearchService.index({
-      index: 'naveen',
+      index: 'sales',
       id,
       body: dataWithoutId,
     });

@@ -5,7 +5,8 @@ import { CreateSalesDto, UpdateSalesDto } from "../dto/sales.dto";
 import { SalesRepo } from "../sales.repo";
 import { ElasticSearchService } from "./elastic-search.service";
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { SalesCreatedEvent } from "../events/sales-created.event";
+import { salesDataMapping } from "libs/mapping";
+import { salesData } from "src/data/sales";
 
 
 @Injectable()
@@ -14,6 +15,10 @@ export class SalesService {
 
   newId(): string {
     return new Types.ObjectId().toHexString();
+  }
+
+  async createESIndex() {
+    this.elasticService.createIndex('sales', salesDataMapping)
   }
 
   async create(input: CreateSalesDto) {

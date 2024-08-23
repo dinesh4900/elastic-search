@@ -7,6 +7,11 @@ import { Sales } from "./schema/sales.schema";
 export class SalesController {
   constructor(private readonly salesService: SalesService) { }
 
+  @Post('create-index')
+  async createESIndex() {
+    return this.salesService.createESIndex();
+  }
+
   @Post()
   async create(@Body() createSalesDto: CreateSalesDto): Promise<Sales> {
     return this.salesService.create(createSalesDto);
