@@ -10,7 +10,7 @@ export class Sales extends Document {
   product_name: string;
 
   @Prop()
-  category: string;
+  category: string[];
 
   @Prop()
   discounted_price: number;

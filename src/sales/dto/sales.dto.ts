@@ -1,7 +1,7 @@
 export class CreateSalesDto {
   product_id: string;
   product_name: string;
-  category?: string;
+  category?: string[];
   discounted_price?: number;
   actual_price?: number;
   discount_percentage?: number;

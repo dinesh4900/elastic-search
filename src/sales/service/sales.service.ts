@@ -6,6 +6,7 @@ import { SalesRepo } from "../sales.repo";
 import { ElasticSearchService } from "./elastic-search.service";
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { salesDataMapping } from "libs/mapping";
+import { salesData } from "src/data/sales";
 
 
 @Injectable()
@@ -23,6 +24,25 @@ export class SalesService {
   async create(input: CreateSalesDto) {
     const result = await this.salesRepo.create(input);
     return result
+  }
+
+  async migrate() {
+    const sales: any = salesData[0]
+
+    const payload = {
+      product_id: sales.product_id,
+      product_name: sales.product_name,
+      category: sales.category.split('|'),
+      discounted_price: sales.category.split('|'),
+      actual_price: sales.actual_price,
+      discount_percentage: sales.discount_percentage,
+      rating: sales.rating,
+      rating_count: sales.ratingCount
+    }
+
+    console.log(payload, '## payload')
+
+    return null
   }
 
   async update(id: string, updateUserDto: UpdateSalesDto) {

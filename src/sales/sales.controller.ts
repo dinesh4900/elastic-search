@@ -17,6 +17,11 @@ export class SalesController {
     return this.salesService.create(createSalesDto);
   }
 
+  @Post('migrate')
+  async migrate(): Promise<Sales> {
+    return this.salesService.migrate();
+  }
+
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateSalesDto: UpdateSalesDto): Promise<Sales> {
     return this.salesService.update(id, updateSalesDto);
