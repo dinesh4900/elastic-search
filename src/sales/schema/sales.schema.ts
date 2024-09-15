@@ -1,32 +1,34 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { ISales } from '../interface/sales.interface';
+import { BaseDocument } from 'src/base/schema/base.schema';
 
 @Schema()
-export class Sales extends Document {
+export class Sales extends BaseDocument implements ISales {
   @Prop({ required: true })
-  product_id: string;
+  productId: string;
 
   @Prop()
-  product_name: string;
+  productName: string;
 
   @Prop()
   category: string[];
 
   @Prop()
-  discounted_price: number;
+  actualPrice: number;
 
   @Prop()
-  actual_price: number;
+  discountedPrice: number;
 
   @Prop()
-  discount_percentage: number;
+  discountPercentage: number;
 
   @Prop()
   rating: number;
 
   @Prop()
-  rating_count: number;
+  ratingCount: number;
 }
 
-export type TaskDocument = Sales & Document;
+export type SalesDocument = Sales & Document;
 export const SalesSchema = SchemaFactory.createForClass(Sales);

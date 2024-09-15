@@ -1,4 +1,6 @@
-export class CreateSalesDto {
+import { IModelState } from "src/base/interface/base.interface";
+
+export interface ISales extends IModelState {
   productId: string;
   productName: string;
   category?: string[];
@@ -7,10 +9,4 @@ export class CreateSalesDto {
   discountPercentage?: number;
   rating?: number;
   ratingCount?: number;
-}
-
-export class UpdateSalesDto {
-  name: string;
-  age: number;
-  email: string;
 }
