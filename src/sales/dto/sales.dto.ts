@@ -7,6 +7,8 @@ export class CreateSalesDto {
   discountPercentage?: number;
   rating?: number;
   ratingCount?: number;
+  currency?: string
+  aboutProduct?: string
 }
 
 export class UpdateSalesDto {

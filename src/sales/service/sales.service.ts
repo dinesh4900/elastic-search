@@ -1,7 +1,5 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { Types } from "mongoose";
-import { Sales } from "../schema/sales.schema";
-import { CreateSalesDto, UpdateSalesDto } from "../dto/sales.dto";
+import { Injectable } from "@nestjs/common";
+import { CreateSalesDto } from "../dto/sales.dto";
 import { SalesRepo } from "../sales.repo";
 import { ElasticSearchService } from "./elastic-search.service";
 import { EventEmitter2 } from '@nestjs/event-emitter';
@@ -26,5 +24,17 @@ export class SalesService {
       updatedAt: currentDate,
     });
     return result
+  }
+
+  async migrate() {
+    for (let index = 0; index < salesData.length; index++) {
+      const element = salesData[index];
+      try {
+        this.create(element)
+      } catch (err) {
+        console.log(err, `[ERROR] in create sales data migration ${index}`)
+      }
+
+    }
   }
 }

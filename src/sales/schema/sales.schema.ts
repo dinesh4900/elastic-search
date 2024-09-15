@@ -12,7 +12,10 @@ export class Sales extends BaseDocument implements ISales {
   productName: string;
 
   @Prop()
-  category: string[];
+  categories: string[];
+
+  @Prop()
+  currency: string
 
   @Prop()
   actualPrice: number;
@@ -28,6 +31,9 @@ export class Sales extends BaseDocument implements ISales {
 
   @Prop()
   ratingCount: number;
+
+  @Prop()
+  aboutProduct: string
 }
 
 export type SalesDocument = Sales & Document;

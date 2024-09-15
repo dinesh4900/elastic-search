@@ -9,4 +9,6 @@ export interface ISales extends IModelState {
   discountPercentage?: number;
   rating?: number;
   ratingCount?: number;
+  currency?: string
+  aboutProduct?: string
 }
